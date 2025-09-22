@@ -18,13 +18,12 @@ const App = () => {
       // Calculate distance from wave center
       const distanceFromCenter = Math.abs(col - centerPosition);
       
-      // Dynamic wave width that changes over time
-      const dynamicWaveWidth = waveWidth + Math.sin(time * 0.01) * 2;
-      const waveIntensity = Math.max(0, 1 - (distanceFromCenter / (dynamicWaveWidth / 2)));
+      // Fixed wave width of exactly 6 columns
+      const waveIntensity = Math.max(0, 1 - (distanceFromCenter / (waveWidth / 2)));
       
       if (waveIntensity > 0) {
-        // Create dynamic gradient within the wave
-        const gradientPosition = (col - (centerPosition - dynamicWaveWidth/2)) / dynamicWaveWidth;
+        // Create gradient within the 6-column wave
+        const gradientPosition = (col - (centerPosition - waveWidth/2)) / waveWidth;
         const clampedGradient = Math.max(0, Math.min(1, gradientPosition));
         
         // Add dynamic effects based on row and time
