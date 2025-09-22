@@ -18,8 +18,8 @@ const App = () => {
       // Calculate distance from wave center
       const distanceFromCenter = Math.abs(col - centerPosition);
       
-      // Fixed wave width of exactly 6 columns (3.5 on each side of center)
-      const waveIntensity = Math.max(0, 1 - (distanceFromCenter / 3.5));
+      // Fixed wave width of exactly 6 columns (3 on each side of center)
+      const waveIntensity = Math.max(0, 1 - (distanceFromCenter / 3));
       
       if (waveIntensity > 0) {
         // Create gradient within the 6-column wave
@@ -70,9 +70,9 @@ const App = () => {
       setWavePosition(prev => {
         const newPos = prev + waveDirection;
         // Reverse direction when reaching edges: start to last, then last to start
-        if (newPos >= gridSize.cols - 3) {
+        if (newPos >= gridSize.cols - 2) {
           setWaveDirection(-1); // Reverse to move left
-          return gridSize.cols - 3;
+          return gridSize.cols - 2;
         } else if (newPos <= 0) {
           setWaveDirection(1); // Reverse to move right
           return 0;
