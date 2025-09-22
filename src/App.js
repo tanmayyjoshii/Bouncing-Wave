@@ -18,8 +18,8 @@ const App = () => {
       // Calculate distance from wave center
       const distanceFromCenter = Math.abs(col - centerPosition);
       
-      // Fixed wave width of exactly 6 columns
-      const waveIntensity = Math.max(0, 1 - (distanceFromCenter / (waveWidth / 2)));
+      // Fixed wave width of exactly 6 columns (3 on each side of center)
+      const waveIntensity = Math.max(0, 1 - (distanceFromCenter / 3));
       
       if (waveIntensity > 0) {
         // Create gradient within the 6-column wave
